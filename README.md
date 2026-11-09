@@ -77,7 +77,18 @@ npm run build
 npm run preview
 ```
 
-## 4. Deploy to Cloudflare Pages
+## 4. Deploy to GitHub Pages
+
+This repository includes a GitHub Actions workflow at `.github/workflows/deploy.yml`. It builds the Vite app and publishes the generated `dist/` directory.
+
+1. In GitHub, open **Settings → Pages** and set **Source** to **GitHub Actions**.
+2. Under **Settings → Secrets and variables → Actions**, add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as repository secrets. Use the Supabase anon/publishable key only; never use the service-role key.
+3. Push to the `main` branch. The workflow builds and deploys automatically. Check the **Actions** tab for its status.
+4. The site will be published at `https://rashraftr786-tech.github.io/JK_SMART_SCHOOL_ERP/`.
+
+The Vite base path is already configured for this repository. Do not publish the repository source directory or the `src/` folder directly; GitHub Pages must publish the generated `dist/` artifact. See [GITHUB_PAGES_DEPLOYMENT.md](GITHUB_PAGES_DEPLOYMENT.md) for detailed steps.
+
+## 5. Deploy to Cloudflare Pages (alternative)
 
 - Push this folder to a private GitHub repository.
 - In Cloudflare Pages, create a project connected to that repository.
@@ -86,7 +97,7 @@ npm run preview
 - Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as build environment variables.
 - Configure the production and preview URLs in Supabase Auth → URL Configuration.
 
-## 5. Security notes
+## 6. Security notes
 
 - RLS is enabled on all application tables in this migration.
 - Privileged roles are assigned only through trusted administrative provisioning.
@@ -96,7 +107,7 @@ npm run preview
 - Configure Supabase Auth email confirmation and password policies before production.
 - Keep the repository private if it contains any non-public school configuration. Never commit `.env`.
 
-## 6. Phase 1 implementation status
+## 7. Phase 1 implementation status
 
 | Item | Status in this starter |
 |---|---|
