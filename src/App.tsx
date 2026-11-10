@@ -32,7 +32,16 @@ export default function App() {
       const { data, error } = await supabase.from('user_roles').select('id, role_id, role:roles(role_name)')
       if (!active) return
       if (error) setError(error.message)
-      setRoles((data ?? []) as UserRole[])
+      // Normalize the Supabase related role result.
+const normalizedRoles: UserRole[] = (data ?? []).map((row) => ({
+  id: row.id,
+  role_id: row.role_id,
+  role: Array.isArray(row.role)
+    ? (row.role[0] ?? null)
+    : (row.role ?? null),
+}))
+
+setRoles(normalizedRoles)
     }
     loadRoles()
     return () => { active = false }
