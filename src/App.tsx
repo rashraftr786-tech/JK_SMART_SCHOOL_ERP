@@ -157,7 +157,7 @@ function Dashboard({ session, roles, error, onSignOut }: { session: Session; rol
       </>}
       <div className="side-label side-label-lower">SYSTEM</div>
       <a className="side-item" href="#system-status"><Settings size={18}/> Settings</a>
-      <div className="sidebar-bottom"><div className="avatar">{(session.user.email?.[0] ?? 'U').toUpperCase()}</div><div className="user-meta"><b>{session.user.email}</b><small>{roles.map(r=>r.role.replaceAll('_',' ')).join(', ') || 'No role assigned'}</small></div></div>
+      <div className="sidebar-bottom"><div className="avatar">{(session.user.email?.[0] ?? 'U').toUpperCase()}</div><div className="user-meta"><b>{session.user.email}</b><small>{roles.map(r => r.role.replace(/_/g, ' ')).join(', ') || 'No role assigned'}</small></div></div>
     </aside>
     <main className="main-area">
       <header className="topbar"><div><span className="muted">ZONE WAGOORA · DISTRICT BARAMULLA</span><h2>Administration Centre</h2></div><div className="topbar-actions"><span className="secure-pill"><span/> Secure workspace</span><button className="ghost-btn" onClick={onSignOut}><LogOut size={17}/> Sign out</button></div></header>
