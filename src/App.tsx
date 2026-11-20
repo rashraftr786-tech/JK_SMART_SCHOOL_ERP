@@ -8,7 +8,15 @@ import {
 } from 'lucide-react'
 import { supabase, isSupabaseConfigured } from './lib/supabase'
 import type { Session } from '@supabase/supabase-js'
-import type { UserRole, Zone, School, District, Profile, AppRole } from './types'
+import type {
+  UserRole,
+  Zone,
+  School,
+  District,
+  Profile,
+  AppRole,
+  AuditLog,
+} from './types'
 
 const ROLE_LABELS: Record<AppRole, string> = {
   super_admin: 'Super Administrator',
