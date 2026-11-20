@@ -143,7 +143,9 @@ function Dashboard({ session, roles, error, onSignOut }: { session: Session; rol
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
-  const [activeSection, setActiveSection] = useState<'overview'|'users'>('overview')
+  const [activeSection, setActiveSection] = useState<
+  'overview' | 'users' | 'activity'
+>('overview')
   const isSuper = roles.some(r => r.role === 'super_admin')
 
   async function refresh() {
