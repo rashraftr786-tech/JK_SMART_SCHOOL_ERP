@@ -197,7 +197,13 @@ function Dashboard({ session, roles, error, onSignOut }: { session: Session; rol
         <a className="side-item" href="#school-registration" onClick={()=>setActiveSection('overview')}><Building2 size={18}/> School Registration</a>
         <a className="side-item" href="#schools" onClick={()=>setActiveSection('overview')}><SchoolIcon size={18}/> School Directory</a>
         <button className={`side-item ${activeSection === 'users' ? 'active' : ''}`} onClick={()=>setActiveSection('users')}><UserCog size={18}/> User Management</button>
-        <a className="side-item" href="#activity" onClick={()=>setActiveSection('overview')}><ClipboardList size={18}/> Audit & Activity</a>
+        <button
+  className={`side-item ${activeSection === 'activity' ? 'active' : ''}`}
+  onClick={() => setActiveSection('activity')}
+>
+  <ClipboardList size={18}/>
+  Audit & Activity
+</button>
       </>}
       <div className="side-label side-label-lower">SYSTEM</div>
       <a className="side-item" href="#system-status" onClick={()=>setActiveSection('overview')}><Settings size={18}/> Settings</a>
