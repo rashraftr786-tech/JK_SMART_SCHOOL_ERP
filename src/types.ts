@@ -30,3 +30,12 @@ export type Profile = {
   is_active: boolean | null
   created_at: string | null
 }
+export type AuditLog = {
+  id: number
+  user_id: string | null
+  action: string
+  table_name: string | null
+  record_id: string | null
+  details: Record<string, unknown> | null
+  created_at: string | null
+}
