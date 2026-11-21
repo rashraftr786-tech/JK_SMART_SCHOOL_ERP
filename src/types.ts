@@ -1,3 +1,11 @@
+/**
+ * JK SMART SCHOOLS ERP
+ * Central application type definitions
+ *
+ * Keep APP_ROLES as the single source of truth for
+ * all supported application roles.
+ */
+
 export const APP_ROLES = [
   'super_admin',
   'district_admin',
@@ -8,9 +16,32 @@ export const APP_ROLES = [
   'student',
 ] as const
 
-export type AppRole = typeof APP_ROLES[number]
-export type UserRole = { id: string; role: AppRole }
-export type Zone = { id: string; name: string; district_id: string; district: string }
+/**
+ * Application role type derived directly from APP_ROLES.
+ */
+export type AppRole = (typeof APP_ROLES)[number]
+
+/**
+ * User role assigned through the user_roles table.
+ */
+export type UserRole = {
+  id: string
+  role: AppRole
+}
+
+/**
+ * Zone information.
+ */
+export type Zone = {
+  id: string
+  name: string
+  district_id: string
+  district: string
+}
+
+/**
+ * School information.
+ */
 export type School = {
   id: string
   zone_id: string
@@ -21,7 +52,19 @@ export type School = {
   phone: string | null
   is_active: boolean
 }
-export type District = { id: string; name: string; state: string }
+
+/**
+ * District information.
+ */
+export type District = {
+  id: string
+  name: string
+  state: string
+}
+
+/**
+ * User profile information.
+ */
 export type Profile = {
   id: string
   full_name: string
@@ -30,6 +73,10 @@ export type Profile = {
   is_active: boolean | null
   created_at: string | null
 }
+
+/**
+ * Audit activity record.
+ */
 export type AuditLog = {
   id: number
   user_id: string | null
