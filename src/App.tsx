@@ -2111,25 +2111,26 @@ function UserManagement({
             )}
 
             <button
-              className="primary-btn"
-              disabled={
-  busy ||
-  role === 'student' ||
-  !fullName.trim() ||
-  !password ||
-  (role === 'parent'
-    ? !phone.trim()
-    : !email.trim()) ||
-  (role === 'district_admin' && !districtId) ||
-  (role === 'zone_admin' && !zoneId) ||
-  (
-    (role === 'school_admin' || role === 'teacher') &&
-    !schoolId
-  )
-}
-              <Plus size={16} />
-              {busy ? 'Creating account…' : 'Create authorised account'}
-            </button>
+  className="primary-btn"
+  disabled={
+    busy ||
+    role === 'student' ||
+    !fullName.trim() ||
+    !password ||
+    (role === 'parent'
+      ? !phone.trim()
+      : !email.trim()) ||
+    (role === 'district_admin' && !districtId) ||
+    (role === 'zone_admin' && !zoneId) ||
+    (
+      (role === 'school_admin' || role === 'teacher') &&
+      !schoolId
+    )
+  }
+>
+  <Plus size={16} />
+  {busy ? 'Creating account…' : 'Create authorised account'}
+</button>
 
             <p className="form-footnote">
               <ShieldCheck size={14} />
